@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set current date as env variable
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      run: echo "TIME=$(date +'%Y-%m-%dT%H-%M-%S')" >> $GITHUB_ENV
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -25,10 +25,11 @@ jobs:
         DOCKER_TOKEN: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
-    - name: Build Docker image
-      run: docker build -t ozrygle/test:tt .
-      
+    - name: Build Docker image tt-latest
+      run: docker build -t ozrygle/test:tt-latest .
     - name: Docker Push ttlatest
       run: docker push ozrygle/test:ttlatest
-    - name: Docker Push tt-${{ env.NOW }}
+    - name: Build Docker image tt-TIME
+      run: docker build -t ozrygle/test:ttlatest .
+    - name: Docker Push tt-${{ env.TIME }}
       run: docker push ozrygle/test:tt-${{ env.NOW }}
