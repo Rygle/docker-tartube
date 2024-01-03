@@ -28,7 +28,7 @@ jobs:
     - name: Build Docker image
       run: docker build -t ozrygle/test:tt .
       
-    - name: Docker Push latest
+    - name: Docker Push ttlatest
       run: docker push ozrygle/test:ttlatest
     - name: Docker Push tt-${{ env.NOW }}
       run: docker push ozrygle/test:tt-${{ env.NOW }}
