@@ -27,8 +27,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
     - name: Build Docker image tt-latest
       run: docker build -t ozrygle/test:tt-latest .
-    - name: Docker Push ttlatest
-      run: docker push ozrygle/test:ttlatest
+    - name: Docker Push tt-latest
+      run: docker push ozrygle/test:tt-latest
     - name: Build Docker image tt-TIME
       run: docker build -t ozrygle/test:ttlatest .
     - name: Docker Push tt-${{ env.TIME }}
