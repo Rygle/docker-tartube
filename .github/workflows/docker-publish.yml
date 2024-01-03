@@ -24,7 +24,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
     - name: Build Docker image
-      run: docker build -t ozrygle/test:ttlatest -t ozrygle/test:tt-$(date) .
+      run: docker build -t ozrygle/test:ttlatest .
       
     - name: Docker Push latest
       run: docker push ozrygle/test:ttlatest
