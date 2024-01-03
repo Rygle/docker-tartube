@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Send TIME -> env
-      run: echo "TIME=TT_$(date +'%Y-%m-%d  %H-%M-%S')" >> $GITHUB_ENV
+      run: echo "TIME=TT_$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
