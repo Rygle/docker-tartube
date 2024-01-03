@@ -23,13 +23,14 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         DOCKER_TOKEN: ${{secrets.DOCKER_PASSWORD}}
+        TTTIME: ${{TT-env.TIME}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
     - name: Build Docker image tt-latest
       run: docker build -t ozrygle/test:tt-latest .
     - name: Docker Push tt-latest
       run: docker push ozrygle/test:tt-latest
-    - name: Build Docker image tt-${{ env.TIME }}
+    - name: Build Docker image ${{TTTIME}}
       run: docker build -t ozrygle/test:tt-${{ env.TIME }} .
     - name: Docker Push tt-${{ env.TIME }}
       run: docker push ozrygle/test:tt-${{ env.TIME }}
