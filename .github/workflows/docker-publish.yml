@@ -30,7 +30,7 @@ jobs:
       run: docker build -t ozrygle/test:tt-latest .
     - name: Docker Push tt-latest
       run: docker push ozrygle/test:tt-latest
-    - name: Build Docker image test:${{TTTIME}}
-      run: docker build -t ozrygle/test:${{TTTIME}} .
-    - name: Docker Push ${{TTTIME}}
-      run: docker push ozrygle/test:${{TTTIME}}
+    - name: Build Docker image test:$TTTIME
+      run: docker build -t ozrygle/test:$TTTIME .
+    - name: Docker Push $TTTIME
+      run: docker push ozrygle/test:$TTTIME
