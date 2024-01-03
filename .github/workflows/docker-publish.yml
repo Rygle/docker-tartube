@@ -28,5 +28,5 @@ jobs:
       
     - name: Docker Push latest
       run: docker push ozrygle/test:ttlatest
-    - name: Docker Push (date +%s)  
-      run: docker push ozrygle/test:tt(date +%s)
+    - name: Docker Push $(date +%s)  
+      run: docker push ozrygle/test:tt$(date +%s)
