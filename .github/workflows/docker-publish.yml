@@ -17,20 +17,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Send TIME -> env
-      run: echo "TIME=$(date +'%Y-%m-%d  %H-%M-%S')" >> $GITHUB_ENV
+      run: echo "TIME=TT_$(date +'%Y-%m-%d  %H-%M-%S')" >> $GITHUB_ENV
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         DOCKER_TOKEN: ${{secrets.DOCKER_PASSWORD}}
-        TTTIME: ${{TT-env.TIME}}
+        TTTIME: ${{env.TIME}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
     - name: Build Docker image tt-latest
       run: docker build -t ozrygle/test:tt-latest .
     - name: Docker Push tt-latest
       run: docker push ozrygle/test:tt-latest
-    - name: Build Docker image ${{TTTIME}}
-      run: docker build -t ozrygle/test:tt-${{ env.TIME }} .
-    - name: Docker Push tt-${{ env.TIME }}
-      run: docker push ozrygle/test:tt-${{ env.TIME }}
+    - name: Build Docker image test:${{TTTIME}}
+      run: docker build -t ozrygle/test:${{TTTIME}} .
+    - name: Docker Push ${{TTTIME}}
+      run: docker push ozrygle/test:${{TTTIME}}
