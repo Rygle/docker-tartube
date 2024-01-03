@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -28,5 +30,5 @@ jobs:
       
     - name: Docker Push latest
       run: docker push ozrygle/test:ttlatest
-    - name: Docker Push tt-${{ github.event.repository.updated_at}}  
-      run: docker push ozrygle/test:tt-${{ github.event.repository.updated_at}}
+    - name: Docker Push tt-${{ env.NOW }}
+      run: docker push ozrygle/test:tt-${{ env.NOW }}
