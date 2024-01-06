@@ -19,6 +19,7 @@ RUN     sudo apt-get upgrade -y
 RUN     sudo apt-get -y --no-install-recommends install pkg-config
 RUN     sudo apt-get -y --no-install-recommends install ffmpeg
 RUN     sudo apt-get -y --no-install-recommends install python3-pip
+RUN     sudo apt-get -y --no-install-recommends install python-feedparser
 # RUN     sudo apt-get -y --no-install-recommends install python3-gobject
 RUN     sudo apt-get -y --no-install-recommends install python3-requests
 # RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
@@ -32,7 +33,7 @@ RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
 RUN     sudo apt-get -y --no-install-recommends install aria2
 RUN     sudo apt-get -y --no-install-recommends install pipx
 
-RUN     sudo pip install --no-cache-dir feedparser
+# RUN     sudo pip install --no-cache-dir feedparser
 RUN     sudo pip install --no-cache-dir PyGObject
 RUN     sudo pip install --no-cache-dir matplotlib
 RUN     sudo pip install --no-cache-dir AtomicParsley
