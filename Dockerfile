@@ -13,6 +13,7 @@ WORKDIR /tmp
 # 		| tr -d \""]
 
 # install packages
+ARG     DEBIAN_FRONTEND=noninteractive
 RUN     sudo apt-get update -y
 RUN     sudo apt-get upgrade -y
 RUN     sudo apt-get -y --no-install-recommends install pkg-config
@@ -20,7 +21,7 @@ RUN     sudo apt-get -y --no-install-recommends install ffmpeg
 RUN     sudo apt-get -y --no-install-recommends install python3-pip
 # RUN     sudo apt-get -y --no-install-recommends install python3-gobject
 RUN     sudo apt-get -y --no-install-recommends install python3-requests
-RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
+# RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
 RUN     sudo apt-get -y --no-install-recommends install python3-gi
 RUN     sudo apt-get -y --no-install-recommends install python3-cairo
 RUN     sudo apt-get -y --no-install-recommends install python3-gi-cairo
@@ -40,7 +41,7 @@ RUN     sudo pipx install aria2
 RUN     sudo pipx install playsound
 RUN     sudo pipx install yt-dlp
 RUN     sudo pipx install tartube
-# RUN     sudo pipx install moviepy
+RUN     sudo pipx install moviepy
 
 RUN     sudo pipx completions
 RUN     sudo pipx ensurepath
