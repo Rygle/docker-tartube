@@ -18,7 +18,7 @@ RUN     apt-get upgrade -y
 RUN     apt-get -y --no-install-recommends install pkg-config
 RUN     apt-get -y --no-install-recommends install ffmpeg
 RUN     apt-get -y --no-install-recommends install python3-pip
-RUN     apt-get -y --no-install-recommends install python3-gobject
+# RUN     apt-get -y --no-install-recommends install python3-gobject
 RUN     apt-get -y --no-install-recommends install python3-requests
 RUN     apt-get -y --no-install-recommends install python3-moviepy
 RUN     apt-get -y --no-install-recommends install python3-gi
