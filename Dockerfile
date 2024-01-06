@@ -20,7 +20,7 @@ RUN     apt-get -y --no-install-recommends install ffmpeg
 RUN     apt-get -y --no-install-recommends install python3-pip
 # RUN     apt-get -y --no-install-recommends install python3-gobject
 RUN     apt-get -y --no-install-recommends install python3-requests
-RUN     apt-get -y --no-install-recommends install python3-moviepy
+# RUN     apt-get -y --no-install-recommends install python3-moviepy
 RUN     apt-get -y --no-install-recommends install python3-gi
 RUN     apt-get -y --no-install-recommends install python3-cairo
 RUN     apt-get -y --no-install-recommends install python3-gi-cairo
@@ -39,6 +39,7 @@ RUN     pip3 install aria2
 RUN     pip3 install playsound
 RUN     pip3 install yt-dlp
 RUN     pip3 install tartube
+RUN     pip3 install moviepy
 RUN     pkg-config cairo
 #	wget --output-document=/tmp/tartube.deb ${TARTUBE_URL} && \
 #
