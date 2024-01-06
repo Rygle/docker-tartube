@@ -8,9 +8,9 @@ WORKDIR /tmp
 # ARG TARTUBE_VERSION=2.4.429
 # ARG TARTUBE_URL=https://github.com/axcore/tartube/releases/download/v${TARTUBE_VERSION}/python3-tartube_${TARTUBE_VERSION}.deb
 # ARG	TARTUBE_URL=["curl -s https://api.github.com/repos/axcore/tartube/releases/latest \
- 		| grep -v STRICT | grep "browser_download_url.*deb" \
- 		| cut -d : -f 2,3 \
- 		| tr -d \""]
+# 		| grep -v STRICT | grep "browser_download_url.*deb" \
+# 		| cut -d : -f 2,3 \
+# 		| tr -d \""]
 
 # install packages
 RUN  \
