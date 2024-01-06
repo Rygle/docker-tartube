@@ -32,16 +32,16 @@ RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
 RUN     sudo apt-get -y --no-install-recommends install aria2
 RUN     sudo apt-get -y --no-install-recommends install pipx
 
-RUN     sudo pipx install feedparser
-RUN     sudo pipx install PyGObject
-RUN     sudo pipx install matplotlib
-RUN     sudo pipx install AtomicParsley
-RUN     sudo pipx install streamlink
-RUN     sudo pipx install aria2
-RUN     sudo pipx install playsound
-RUN     sudo pipx install yt-dlp
-RUN     sudo pipx install tartube
-RUN     sudo pipx install moviepy
+RUN     sudo pip install feedparser
+RUN     sudo pip install PyGObject
+RUN     sudo pip install matplotlib
+RUN     sudo pip install AtomicParsley
+RUN     sudo pip install streamlink
+RUN     sudo pip install aria2
+RUN     sudo pip install playsound
+RUN     sudo pip install yt-dlp
+RUN     sudo pip install tartube
+RUN     sudo pip install moviepy
 
 RUN     sudo pipx completions
 RUN     sudo pipx ensurepath
