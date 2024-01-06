@@ -35,7 +35,7 @@ RUN     sudo apt-get -y --no-install-recommends install aria2
 RUN     sudo apt-get -y --no-install-recommends install pipx
 
 # RUN     sudo pip install --no-cache-dir feedparser
-RUN     sudo pip install --no-cache-dir PyGObject
+RUN     sudo pipx install --no-cache-dir PyGObject
 RUN     sudo pip install --no-cache-dir matplotlib
 RUN     sudo pip install --no-cache-dir AtomicParsley
 RUN     sudo pip install --no-cache-dir streamlink
