@@ -19,7 +19,7 @@ RUN     sudo apt-get upgrade -y
 RUN     sudo apt-get -y --no-install-recommends install pkg-config
 RUN     sudo apt-get -y --no-install-recommends install ffmpeg
 RUN     sudo apt-get -y --no-install-recommends install python3-pip
-RUN     sudo apt-get -y --no-install-recommends install python-feedparser
+RUN     sudo apt-get -y --no-install-recommends install python3-feedparser
 # RUN     sudo apt-get -y --no-install-recommends install python3-gobject
 RUN     sudo apt-get -y --no-install-recommends install python3-requests
 # RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
