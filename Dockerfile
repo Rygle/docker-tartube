@@ -13,34 +13,40 @@ WORKDIR /tmp
 # 		| tr -d \""]
 
 # install packages
-RUN     apt-get update -y
-RUN     apt-get upgrade -y
-RUN     apt-get -y --no-install-recommends install pkg-config
-RUN     apt-get -y --no-install-recommends install ffmpeg
-RUN     apt-get -y --no-install-recommends install python3-pip
-# RUN     apt-get -y --no-install-recommends install python3-gobject
-RUN     apt-get -y --no-install-recommends install python3-requests
-# RUN     apt-get -y --no-install-recommends install python3-moviepy
-RUN     apt-get -y --no-install-recommends install python3-gi
-RUN     apt-get -y --no-install-recommends install python3-cairo
-RUN     apt-get -y --no-install-recommends install python3-gi-cairo
-RUN     apt-get -y --no-install-recommends install python3-cairocffi
-RUN     apt-get -y --no-install-recommends install gir1.2-gtk-3.0
-RUN     apt-get -y --no-install-recommends install libgtk-3-common
-RUN     apt-get -y --no-install-recommends install libgtk-3-0
-RUN     apt-get -y --no-install-recommends install aria2
+RUN     sudo apt-get update -y
+RUN     sudo apt-get upgrade -y
+RUN     sudo apt-get -y --no-install-recommends install pkg-config
+RUN     sudo apt-get -y --no-install-recommends install ffmpeg
+RUN     sudo apt-get -y --no-install-recommends install python3-pip
+RUN     sudo apt-get -y --no-install-recommends install python3-gobject
+RUN     sudo apt-get -y --no-install-recommends install python3-requests
+RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
+RUN     sudo apt-get -y --no-install-recommends install python3-gi
+RUN     sudo apt-get -y --no-install-recommends install python3-cairo
+RUN     sudo apt-get -y --no-install-recommends install python3-gi-cairo
+RUN     sudo apt-get -y --no-install-recommends install python3-cairocffi
+RUN     sudo apt-get -y --no-install-recommends install gir1.2-gtk-3.0
+RUN     sudo apt-get -y --no-install-recommends install libgtk-3-common
+RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
+RUN     sudo apt-get -y --no-install-recommends install aria2
+RUN     sudo apt-get -y --no-install-recommends install pipx
 
-RUN     pip3 -y install feedparser
-RUN     pip3 install PyGObject
-RUN     pip3 install matplotlib
-RUN     pip3 install AtomicParsley
-RUN     pip3 install streamlink
-RUN     pip3 install aria2
-RUN     pip3 install playsound
-RUN     pip3 install yt-dlp
-RUN     pip3 install tartube
-RUN     pip3 install moviepy
-RUN     pkg-config cairo
+RUN     sudo pipx install feedparser
+RUN     sudo pipx install PyGObject
+RUN     sudo pipx install matplotlib
+RUN     sudo pipx install AtomicParsley
+RUN     sudo pipx install streamlink
+RUN     sudo pipx install aria2
+RUN     sudo pipx install playsound
+RUN     sudo pipx install yt-dlp
+RUN     sudo pipx install tartube
+# RUN     sudo pipx install moviepy
+
+RUN     sudo pipx completions
+RUN     sudo pipx ensurepath
+
+RUN     sudo pkg-config cairo
+
 #	wget --output-document=/tmp/tartube.deb ${TARTUBE_URL} && \
 #
 #	wget -O /tmp/tartube.deb $["curl -s https://api.github.com/repos/axcore/tartube/releases/latest \
@@ -49,11 +55,11 @@ RUN     pkg-config cairo
 #		| tr -d \""] && \
 #	dpkg -i /tmp/tartube.deb && \
 
-#	apt-get -y --no-install-recommends install /tmp/tartube.deb
-RUN     apt-get -y autoremove
-RUN     apt-get -y clean
-RUN     rm -rf /var/lib/apt/lists/*
-RUN     rm -rf /tmp/*
+#	sudo apt-get -y --no-install-recommends install /tmp/tartube.deb
+RUN     sudo apt-get -y autoremove
+RUN     sudo apt-get -y clean
+RUN     sudo rm -rf /var/lib/sudo apt/lists/*
+RUN     sudo rm -rf /tmp/*
 
 # Define variables.
 # ENV	DOCKER_MODS=linuxserver/mods:universal-package-install \
