@@ -39,24 +39,24 @@ RUN  \
 		AtomicParsley \
  		streamlink \
   		aria2 \
-     		moviepy \
+#     		moviepy \
       		playsound \
       		yt-dlp \
        		tartube && \
-	pkg-config cairo
+	pkg-config cairo && \
 #	wget --output-document=/tmp/tartube.deb ${TARTUBE_URL} && \
-
+#
 #	wget -O /tmp/tartube.deb $["curl -s https://api.github.com/repos/axcore/tartube/releases/latest \
 #		| grep -v STRICT | grep "browser_download_url.*deb" \
 #		| cut -d : -f 2,3 \
 #		| tr -d \""] && \
 #	dpkg -i /tmp/tartube.deb && \
 
-#    apt-get -y --no-install-recommends install /tmp/tartube.deb && \
-     apt-get -y autoremove && \
-     apt-get -y clean && \
-     rm -rf /var/lib/apt/lists/*  && \
-     rm -rf /tmp/*RUN	rm -rf /tmp/*
+#	apt-get -y --no-install-recommends install /tmp/tartube.deb && \
+	apt-get -y autoremove && \
+	apt-get -y clean && \
+	rm -rf /var/lib/apt/lists/*  && \
+	rm -rf /tmp/*
 
 # Define variables.
 ENV	\
@@ -72,4 +72,4 @@ VOLUME ["/storage/"]
 VOLUME ["/config/"]
 EXPOSE 3000
 ENTRYPOINT ["tartube"]
-#ENTRYPOINT ["~/.local/bin/tartube"]
+# ENTRYPOINT ["~/.local/bin/tartube"]
