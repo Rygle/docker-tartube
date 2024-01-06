@@ -30,7 +30,7 @@ RUN     apt-get -y --no-install-recommends install libgtk-3-common
 RUN     apt-get -y --no-install-recommends install libgtk-3-0
 RUN     apt-get -y --no-install-recommends install aria2
 
-RUN     pip3 install feedparser
+RUN     pip3 -y install feedparser
 RUN     pip3 install PyGObject
 RUN     pip3 install matplotlib
 RUN     pip3 install AtomicParsley
