@@ -13,8 +13,7 @@ WORKDIR /tmp
 # 		| tr -d \""]
 
 # install packages
-RUN  \
-        apt-get update -y && \
+RUN     apt-get update -y && \
         apt-get upgrade -y && \
         apt-get -y --no-install-recommends install \
                 pkg-config \
