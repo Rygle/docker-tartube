@@ -13,36 +13,33 @@ WORKDIR /tmp
 # 		| tr -d \""]
 
 # install packages
-RUN     apt-get update -y && \
-        apt-get upgrade -y && \
-        apt-get -y --no-install-recommends install \
-                pkg-config \
-                ffmpeg \
-                python3-pip \
-                python3-gobject \
-                python3-requests \
-                python3-moviepy \
-                python3-gi \
-                python3-cairo \
-                python3-gi-cairo \
-                python3-cairocffi \
-                gir1.2-gtk-3.0 \
-                libgtk-3-common \
-                libgtk-3-0 \
-#               cairo \
-                aria2 && \
-        pip3 install \
-     		feedparser \
-                PyGObject \
-                matplotlib \
-                AtomicParsley \
-                streamlink \
-                aria2 \
-#               moviepy \
-                playsound \
-                yt-dlp \
-                tartube && \
-        pkg-config cairo && \
+RUN     apt-get update -y
+RUN     apt-get upgrade -y
+RUN     apt-get -y --no-install-recommends install pkg-config
+RUN     apt-get -y --no-install-recommends install ffmpeg
+RUN     apt-get -y --no-install-recommends install python3-pip
+RUN     apt-get -y --no-install-recommends install python3-gobject
+RUN     apt-get -y --no-install-recommends install python3-requests
+RUN     apt-get -y --no-install-recommends install python3-moviepy
+RUN     apt-get -y --no-install-recommends install python3-gi
+RUN     apt-get -y --no-install-recommends install python3-cairo
+RUN     apt-get -y --no-install-recommends install python3-gi-cairo
+RUN     apt-get -y --no-install-recommends install python3-cairocffi
+RUN     apt-get -y --no-install-recommends install gir1.2-gtk-3.0
+RUN     apt-get -y --no-install-recommends install libgtk-3-common
+RUN     apt-get -y --no-install-recommends install libgtk-3-0
+RUN     apt-get -y --no-install-recommends install aria2
+
+RUN     pip3 install feedparser
+RUN     pip3 install PyGObject
+RUN     pip3 install matplotlib
+RUN     pip3 install AtomicParsley
+RUN     pip3 install streamlink
+RUN     pip3 install aria2
+RUN     pip3 install playsound
+RUN     pip3 install yt-dlp
+RUN     pip3 install tartube
+RUN     pkg-config cairo
 #	wget --output-document=/tmp/tartube.deb ${TARTUBE_URL} && \
 #
 #	wget -O /tmp/tartube.deb $["curl -s https://api.github.com/repos/axcore/tartube/releases/latest \
@@ -51,22 +48,21 @@ RUN     apt-get update -y && \
 #		| tr -d \""] && \
 #	dpkg -i /tmp/tartube.deb && \
 
-#	apt-get -y --no-install-recommends install /tmp/tartube.deb && \
-        apt-get -y autoremove && \
-        apt-get -y clean && \
-        rm -rf /var/lib/apt/lists/*  && \
-        rm -rf /tmp/*
+#	apt-get -y --no-install-recommends install /tmp/tartube.deb
+RUN     apt-get -y autoremove
+RUN     apt-get -y clean
+RUN     rm -rf /var/lib/apt/lists/*
+RUN     rm -rf /tmp/*
 
 # Define variables.
-ENV	\
-#	DOCKER_MODS=linuxserver/mods:universal-package-install \
-#	INSTALL_PACKAGES=wget|python3-gi|gir1.2-gtk-3.0|libgtk-3-common|libgtk-3-0 \
-#	INSTALL_PIP_PACKAGES=tartube|yt-dlp|moviepy|aria2|streamlink|AtomicParsley|matplotlib|feedparser|PyGObject \
-        LANGUAGE=en_US:en \
-        LC_ALL=en_US.UTF-8 \
-        APP_NAME="Tartube" \
-        DISPLAY_WIDTH="1600" \
-        DISPLAY_HEIGHT="900"
+# ENV	DOCKER_MODS=linuxserver/mods:universal-package-install \
+# ENV	INSTALL_PACKAGES=wget|python3-gi|gir1.2-gtk-3.0|libgtk-3-common|libgtk-3-0 \
+# ENV	INSTALL_PIP_PACKAGES=tartube|yt-dlp|moviepy|aria2|streamlink|AtomicParsley|matplotlib|feedparser|PyGObject
+ENV     LANGUAGE=en_US:en
+ENV     LC_ALL=en_US.UTF-8
+ENV     APP_NAME="Tartube"
+ENV     DISPLAY_WIDTH="1600"
+ENV     DISPLAY_HEIGHT="900"
 VOLUME ["/storage/"]
 VOLUME ["/config/"]
 EXPOSE 3000
