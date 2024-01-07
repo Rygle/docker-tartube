@@ -25,6 +25,8 @@ RUN     sudo apt-get -y --no-install-recommends install python3-feedparser
 RUN     sudo apt-get -y --no-install-recommends install python3-requests
 # RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
 RUN     sudo apt-get -y --no-install-recommends install python3-gi
+RUN     sudo apt-get -y --no-install-recommends install python-gi-dev
+RUN     sudo apt-get -y --no-install-recommends install gobject-introspection
 RUN     sudo apt-get -y --no-install-recommends install python3-cairo
 RUN     sudo apt-get -y --no-install-recommends install python3-gi-cairo
 RUN     sudo apt-get -y --no-install-recommends install python3-cairocffi
@@ -34,8 +36,9 @@ RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
 RUN     sudo apt-get -y --no-install-recommends install aria2
 RUN     sudo apt-get -y --no-install-recommends install pipx
 
+
 # RUN     sudo pip install --no-cache-dir feedparser
-RUN     sudo pipx install --no-cache-dir PyGObject
+# RUN     sudo pipx install --no-cache-dir PyGObject
 RUN     sudo pip install --no-cache-dir matplotlib
 RUN     sudo pip install --no-cache-dir AtomicParsley
 RUN     sudo pip install --no-cache-dir streamlink
