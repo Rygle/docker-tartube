@@ -43,8 +43,8 @@ RUN     sudo apt-get -y --no-install-recommends install pipx
 RUN     sudo pipx install streamlink
 # RUN     sudo pipx install aria2
 # RUN     sudo python3 pip install playsound
-RUN     sudo pipx install yt-dlp
-RUN     sudo pipx install tartube
+RUN     sudo pip install yt-dlp --force
+RUN     sudo pip install tartube --force
 # RUN     sudo python3 pip install moviepy
 
 RUN     sudo pipx completions
