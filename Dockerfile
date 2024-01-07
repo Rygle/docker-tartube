@@ -39,14 +39,14 @@ RUN     sudo apt-get -y --no-install-recommends install pipx
 
 # RUN     sudo pip install --no-cache-dir feedparser
 # RUN     sudo pipx install --no-cache-dir PyGObject
-RUN     sudo pip install --no-cache-dir matplotlib
-RUN     sudo pip install --no-cache-dir AtomicParsley
-RUN     sudo pip install --no-cache-dir streamlink
-RUN     sudo pip install --no-cache-dir aria2
-RUN     sudo pip install --no-cache-dir playsound
-RUN     sudo pip install --no-cache-dir yt-dlp
-RUN     sudo pip install --no-cache-dir tartube
-RUN     sudo pip install --no-cache-dir moviepy
+RUN     sudo pipx install --no-cache-dir matplotlib
+RUN     sudo pipx install --no-cache-dir AtomicParsley
+RUN     sudo pipx install --no-cache-dir streamlink
+RUN     sudo pipx install --no-cache-dir aria2
+RUN     sudo pipx install --no-cache-dir playsound
+RUN     sudo pipx install --no-cache-dir yt-dlp
+RUN     sudo pipx install --no-cache-dir tartube
+RUN     sudo pipx install --no-cache-dir moviepy
 
 RUN     sudo pipx completions
 RUN     sudo pipx ensurepath
