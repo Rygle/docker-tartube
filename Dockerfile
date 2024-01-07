@@ -42,7 +42,7 @@ RUN     sudo apt-get -y --no-install-recommends install pipx
 # RUN     sudo pip install --include-deps matplotlib
 RUN     sudo pipx install streamlink
 # RUN     sudo pipx install aria2
-RUN     sudo python3 pip install playsound
+# RUN     sudo python3 pip install playsound
 RUN     sudo python3 pip install yt-dlp
 RUN     sudo python3 pip install tartube
 RUN     sudo python3 pip install moviepy
