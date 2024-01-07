@@ -21,9 +21,8 @@ RUN     sudo apt-get -y --no-install-recommends install ffmpeg
 RUN     sudo apt-get -y --no-install-recommends install python3-pip
 RUN     sudo apt-get -y --no-install-recommends install python3-full
 RUN     sudo apt-get -y --no-install-recommends install python3-feedparser
-# RUN     sudo apt-get -y --no-install-recommends install python3-gobject
 RUN     sudo apt-get -y --no-install-recommends install python3-requests
-# RUN     sudo apt-get -y --no-install-recommends install python3-moviepy
+RUN     sudo apt-get -y --no-install-recommends install python3-matplotlib
 RUN     sudo apt-get -y --no-install-recommends install python3-gi
 RUN     sudo apt-get -y --no-install-recommends install python-gi-dev
 RUN     sudo apt-get -y --no-install-recommends install gobject-introspection
@@ -34,15 +33,15 @@ RUN     sudo apt-get -y --no-install-recommends install gir1.2-gtk-3.0
 RUN     sudo apt-get -y --no-install-recommends install libgtk-3-common
 RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
 RUN     sudo apt-get -y --no-install-recommends install aria2
+RUN     sudo apt-get -y --no-install-recommends atomicparsley
 RUN     sudo apt-get -y --no-install-recommends install pipx
 
 
 # RUN     sudo pip install feedparser
 # RUN     sudo pipx install PyGObject
-RUN     sudo pipx install matplotlib
-RUN     sudo pipx install AtomicParsley
+# RUN     sudo pip install --include-deps matplotlib
 RUN     sudo pipx install streamlink
-RUN     sudo pipx install aria2
+# RUN     sudo pipx install aria2
 RUN     sudo pipx install playsound
 RUN     sudo pipx install yt-dlp
 RUN     sudo pipx install tartube
