@@ -35,7 +35,7 @@ RUN     sudo apt-get -y --no-install-recommends install libgtk-3-0
 RUN     sudo apt-get -y --no-install-recommends install aria2
 # RUN     sudo apt-get -y --no-install-recommends atomicparsley
 RUN     sudo apt-get -y --no-install-recommends install pipx
-
+RUN     pipx ensurepath
 
 # RUN     sudo pip install feedparser
 # RUN     sudo pipx install PyGObject
