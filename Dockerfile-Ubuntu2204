@@ -19,8 +19,8 @@ ARG TARTUBE_URL=https://github.com/axcore/tartube/releases/download/v${TARTUBE_V
 
 # install packages
 ARG     DEBIAN_FRONTEND=noninteractive
-RUN     sudo apt-get update -y
-RUN	sudo apt-get upgrade -y
+# RUN     sudo apt-get update -y
+# RUN	sudo apt-get upgrade -y
 RUN \
 	add-pkg \
 		ffmpeg \
