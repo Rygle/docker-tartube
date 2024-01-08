@@ -1,0 +1,88 @@
+# Pull base image.
+FROM ghcr.io/jlesage/baseimage-gui:ubuntu-22.04-v4
+
+# Define working directory.
+WORKDIR /tmp
+
+# Generate and install favicons.
+RUN \
+	APP_ICON_URL=https://raw.githubusercontent.com/angelics/unraid-docker-tartube/main/tartube_icon.png && \
+	install_app_icon.sh "$APP_ICON_URL"
+ 
+# Define download URLs.
+ARG TARTUBE_VERSION=2.4.429
+ARG TARTUBE_URL=https://github.com/axcore/tartube/releases/download/v${TARTUBE_VERSION}/python3-tartube_${TARTUBE_VERSION}.deb
+# ARG TARTUBE_URL=["curl -s https://api.github.com/repos/axcore/tartube/releases/latest \
+# 		| grep -v STRICT | grep "browser_download_url.*deb" \
+# 		| cut -d : -f 2,3 \
+# 		| tr -d \""]
+
+# install packages
+ARG     DEBIAN_FRONTEND=noninteractive
+RUN     sudo apt-get update -y && sudo apt-get upgrade -y
+RUN \
+	add-pkg \
+		ffmpeg \
+		python3-full \
+    python3-matplotlib \
+		python3-pip \
+		python3-feedparser \
+		python3-requests \
+    python3-cairo \
+    python3-cairocffi \
+    gobject-introspection \
+		python3-gi \
+    python-gi-dev \
+		gir1.2-gtk-3.0 \
+    libgtk-3-0 \
+    libgtk-3-common \
+    aria2 \
+		dbus-x11 \
+		at-spi2-core \	
+		locales \
+    atomicparsley \
+  && sed-patch 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+  && locale-gen \
+
+RUN \
+  python3 -m pip install --no-cache-dir --upgrade pip \
+  && python3 -m pip install --no-cache-dir \
+    streamlink \
+# playsound
+    yt-dlp \
+    moviepy \
+
+### Install Tartube
+		&& \
+	add-pkg --virtual build-dependencies \
+		wget \
+		&& \
+	wget -q ${TARTUBE_URL} && \
+	dpkg -i python3-tartube_${TARTUBE_VERSION}.deb && \
+	del-pkg build-dependencies && \
+	rm -rf /tmp/* /tmp/.[!.]*
+
+# Set environment variables.
+RUN \
+    set-cont-env APP_NAME "Tartube" && \
+    set-cont-env APP_VERSION "$TARTUBE_VERSION"
+	
+RUN     sudo apt-get -y autoremove
+RUN     sudo apt-get -y clean
+RUN     sudo rm -rf /var/lib/sudo apt/lists/*
+RUN     sudo rm -rf /tmp/*
+
+# Define variables.
+# ENV	DOCKER_MODS=linuxserver/mods:universal-package-install \
+# ENV	INSTALL_PACKAGES=wget|python3-gi|gir1.2-gtk-3.0|libgtk-3-common|libgtk-3-0 \
+# ENV	INSTALL_PIP_PACKAGES=tartube|yt-dlp|moviepy|aria2|streamlink|AtomicParsley|matplotlib|feedparser|PyGObject
+ENV     LANGUAGE=en_US:en
+ENV     LC_ALL=en_US.UTF-8
+ENV     APP_NAME="Tartube"
+ENV     DISPLAY_WIDTH="1600"
+ENV     DISPLAY_HEIGHT="900"
+VOLUME ["/storage/"]
+VOLUME ["/config/"]
+EXPOSE 3000
+ENTRYPOINT ["tartube"]
+# ENTRYPOINT ["~/.local/bin/tartube"]
