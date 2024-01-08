@@ -63,6 +63,30 @@ RUN \
 	del-pkg build-dependencies && \
 	rm -rf /tmp/* /tmp/.[!.]*
 
+RUN adduser --disabled-password --gecos ""  tartube && \
+    touch /usr/local/bin/docker-entrypoint.sh && \
+    echo '#!/bin/sh' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'set -e' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'PUID=${PUID:-20000}' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'PGID=${PGID:-20000}' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'groupmod -o -g "$PGID" tartube' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'usermod -o -u "$PUID" tartube' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'chown mediaelch:mediaelch /home/tartube' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'chown mediaelch:mediaelch /home/tartube/.*' >> /usr/local/bin/docker-entrypoint.sh && \
+    echo 'exec "$@"' >> /usr/local/bin/docker-entrypoint.sh && \
+    chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    echo 'export LC_ALL=en_US.UTF-8' >> /home/tartube/.profile && \
+    echo 'export LANG=en_US.UTF-8' >> /home/tartube/.profile && \
+    echo 'export LANGUAGE=en_US.UTF-8' >> /home/tartube/.profile && \
+    echo 'export LC_ALL=en_US.UTF-8' >> /home/tartube/.bashrc && \
+    echo 'export LANG=en_US.UTF-8' >> /home/tartube/.bashrc && \
+    echo 'export LANGUAGE=en_US.UTF-8' >> /home/tartube/.bashrc && \
+    touch /startapp.sh && \
+    echo '#!/bin/sh' >> /startapp.sh && \
+    echo 'exec env HOME=/config ~/.local/bin/tartube' >> /startapp.sh && \
+    chmod +x /startapp.sh && \
+
+
 # Set environment variables.
 RUN \
     set-cont-env APP_NAME "Tartube" && \
