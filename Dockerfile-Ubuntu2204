@@ -74,16 +74,21 @@ RUN     rm -rf /var/lib/sudo apt/lists/*
 
 
 # Define variables.
-# ENV	DOCKER_MODS=linuxserver/mods:universal-package-install \
-# ENV	INSTALL_PACKAGES=wget|python3-gi|gir1.2-gtk-3.0|libgtk-3-common|libgtk-3-0 \
-# ENV	INSTALL_PIP_PACKAGES=tartube|yt-dlp|moviepy|aria2|streamlink|AtomicParsley|matplotlib|feedparser|PyGObject
-ENV     LANGUAGE=en_US:en
-ENV     LC_ALL=en_US.UTF-8
-ENV     APP_NAME="Tartube"
-ENV     DISPLAY_WIDTH="1600"
-ENV     DISPLAY_HEIGHT="900"
+ENV     LANGUAGE=en_US:en \
+	LC_ALL=en_US.UTF-8 \
+	APP_NAME="Tartube" \
+	DISPLAY_WIDTH="1600" \
+	DISPLAY_HEIGHT="900" \
+	DARK_MODE=0 \
+	SECURE_CONNECTION=0 \
+	SECURE_CONNECTION_VNC_METHOD=SSL \
+	SECURE_CONNECTION_CERTS_CHECK_INTERVAL=60 \
+	WEB_LISTENING_PORT=5800 \
+	VNC_LISTENING_PORT=5900 \
+	VNC_PASSWORD= \
+	ENABLE_CJK_FONT=0
 VOLUME ["/storage/"]
 VOLUME ["/config/"]
-EXPOSE 3000
+EXPOSE 5800
 ENTRYPOINT ["tartube"]
 # ENTRYPOINT ["~/.local/bin/tartube"]
