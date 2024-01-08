@@ -19,28 +19,29 @@ ARG TARTUBE_URL=https://github.com/axcore/tartube/releases/download/v${TARTUBE_V
 
 # install packages
 ARG     DEBIAN_FRONTEND=noninteractive
-RUN     sudo apt-get update -y && sudo apt-get upgrade -y
+RUN     sudo apt-get update -y
+RUN	sudo apt-get upgrade -y
 RUN \
 	add-pkg \
 		ffmpeg \
 		python3-full \
-    python3-matplotlib \
+		python3-matplotlib \
 		python3-pip \
 		python3-feedparser \
 		python3-requests \
-    python3-cairo \
-    python3-cairocffi \
-    gobject-introspection \
+    		python3-cairo \
+    		python3-cairocffi \
+    		gobject-introspection \
 		python3-gi \
-    python-gi-dev \
+    		python-gi-dev \
 		gir1.2-gtk-3.0 \
-    libgtk-3-0 \
-    libgtk-3-common \
-    aria2 \
+    		libgtk-3-0 \
+    		libgtk-3-common \
+    		aria2 \
 		dbus-x11 \
 		at-spi2-core \	
 		locales \
-    atomicparsley \
+    		atomicparsley \
   && sed-patch 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
   && locale-gen \
 
