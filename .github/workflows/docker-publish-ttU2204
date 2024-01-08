@@ -1,0 +1,31 @@
+name: Docker Image Push ttU2204
+
+on:
+  workflow_dispatch:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        DOCKER_TOKEN: ${{secrets.DOCKER_PASSWORD}}
+        TIME: ${{env.NOW}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_TOKEN 
+    - name: Build Docker image
+#      run: docker build -t ozrygle/test:tt-latest .
+      run: docker build . --file Dockerfile-Ubuntu2204 -t ozrygle/test:ttU2204
+    - name: Docker Push ttU2204
+      run: docker push ozrygle/test:ttU2204
