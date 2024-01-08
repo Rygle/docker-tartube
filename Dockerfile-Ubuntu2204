@@ -43,7 +43,7 @@ RUN \
 		locales \
     		atomicparsley \
   && sed-patch 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
-  && locale-gen \
+  && locale-gen
 
 RUN \
   python3 -m pip install --no-cache-dir --upgrade pip \
@@ -68,10 +68,10 @@ RUN \
     set-cont-env APP_NAME "Tartube" && \
     set-cont-env APP_VERSION "$TARTUBE_VERSION"
 	
-RUN     sudo apt-get -y autoremove
-RUN     sudo apt-get -y clean
-RUN     sudo rm -rf /var/lib/sudo apt/lists/*
-RUN     sudo rm -rf /tmp/*
+RUN     apt-get -y autoremove
+RUN     apt-get -y clean
+RUN     rm -rf /var/lib/sudo apt/lists/*
+
 
 # Define variables.
 # ENV	DOCKER_MODS=linuxserver/mods:universal-package-install \
